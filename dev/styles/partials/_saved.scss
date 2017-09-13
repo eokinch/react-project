@@ -28,17 +28,10 @@
 	}
 }
 
-@media (max-width: 768px) {
-	.saved {
-		width: 65%;
-	}
+@media (max-width: 550px) {
 	.saved-showings {
 		form {
 			width: calc(100% - 20px);
-			&:before {
-				left: 0;
-
-			}
 		}
 	}
 }

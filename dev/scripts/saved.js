@@ -88,9 +88,6 @@ class Saved extends React.Component {
 			)
 		})
 	}
-	checkTimes(){
-
-	}
 	removeShowing(event) {
 		event.preventDefault();
 		const userId = this.state.user.uid;

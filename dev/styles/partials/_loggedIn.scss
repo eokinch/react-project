@@ -55,15 +55,9 @@
 	font-weight: 600;
 }
 
-@media (max-width: 600px) {
-	.check-user-status {
-		width: 30%;
-	}
-}
-
 @media (max-width: 500px) {
 	.check-user-status {
-		width: 35%;
+		width: 30%;
 	}
 	.logged-in_content {
 	 	h1 {
