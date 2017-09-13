@@ -1,0 +1,48 @@
+.browse {
+	width: 100%;
+	h2 {
+		text-align: center;
+		padding-top: 50px;
+	}
+}
+.browse-films {
+	padding: 20px 0;
+	position: relative;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	border: none;
+	border-radius: 0;
+	background: $white;
+	border-bottom: 2px solid $orange;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80%;
+	text-indent: 10px;
+}
+
+.select-showing {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding-top: 30px;
+	form {
+		width: calc(33.33% - 20px)
+	}
+}
+
+@media (max-width: 768px) {
+	.select-showing {
+		form {
+			width: calc(50% - 20px);
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.select-showing {
+		form {
+			width: calc(100% - 20px);
+		}
+	}
+}

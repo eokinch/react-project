@@ -1,0 +1,58 @@
+[debug] [2017-09-13T03:49:50.341Z] ----------------------------------------------------------------------
+[debug] [2017-09-13T03:49:50.343Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-09-13T03:49:50.343Z] CLI Version:   3.10.1
+[debug] [2017-09-13T03:49:50.343Z] Platform:      darwin
+[debug] [2017-09-13T03:49:50.343Z] Node Version:  v8.1.4
+[debug] [2017-09-13T03:49:50.343Z] Time:          Tue Sep 12 2017 23:49:50 GMT-0400 (EDT)
+[debug] [2017-09-13T03:49:50.343Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-13T03:49:50.354Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-13T03:49:50.354Z] > authorizing via signed-in user
+[debug] [2017-09-13T03:49:50.356Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/festivalorganizer-5125e  
+ Tue Sep 12 2017 23:49:50 GMT-0400 (EDT)
+[debug] [2017-09-13T03:49:50.699Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T03:49:50.699Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/festivalorganizer-5125e/tokens  
+ Tue Sep 12 2017 23:49:50 GMT-0400 (EDT)
+[debug] [2017-09-13T03:49:51.090Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'festivalorganizer-5125e'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing . directory for upload...
+[debug] [2017-09-13T03:49:52.007Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/festivalorganizer-5125e/uploads/-KttLrr-c1bDbrRyLrHL?fileCount=60&message=  
+ Tue Sep 12 2017 23:49:52 GMT-0400 (EDT)
+[debug] [2017-09-13T03:50:07.014Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T03:50:07.015Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[debug] [2017-09-13T03:50:39.027Z] ----------------------------------------------------------------------
+[debug] [2017-09-13T03:50:39.037Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-09-13T03:50:39.037Z] CLI Version:   3.10.1
+[debug] [2017-09-13T03:50:39.037Z] Platform:      darwin
+[debug] [2017-09-13T03:50:39.037Z] Node Version:  v8.1.4
+[debug] [2017-09-13T03:50:39.040Z] Time:          Tue Sep 12 2017 23:50:39 GMT-0400 (EDT)
+[debug] [2017-09-13T03:50:39.040Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-13T03:50:39.061Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-13T03:50:39.062Z] > authorizing via signed-in user
+[debug] [2017-09-13T03:50:39.064Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-09-13T03:50:39.064Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/LY-PJluDafCCOTcaBsv-wWxCQqMY9PAv3maEHB-zd7M',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Sep 12 2017 23:50:39 GMT-0400 (EDT)
+[debug] [2017-09-13T03:50:39.283Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T03:50:39.292Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/festivalorganizer-5125e  
+ Tue Sep 12 2017 23:50:39 GMT-0400 (EDT)
+[debug] [2017-09-13T03:50:39.587Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T03:50:39.588Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/festivalorganizer-5125e/tokens  
+ Tue Sep 12 2017 23:50:39 GMT-0400 (EDT)
+[debug] [2017-09-13T03:50:39.937Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'festivalorganizer-5125e'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing . directory for upload...
+[debug] [2017-09-13T03:50:40.962Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/festivalorganizer-5125e/uploads/-KttM2YReLWhm5zQNsLM?fileCount=60&message=  
+ Tue Sep 12 2017 23:50:40 GMT-0400 (EDT)
+[debug] [2017-09-13T03:50:52.829Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T03:50:52.829Z] [hosting] .tgz uploaded successfully, waiting for extraction

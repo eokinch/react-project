@@ -1,0 +1,47 @@
+.saved {
+	width: 100%;
+	h2 {
+		margin-bottom: 40px;
+	}
+	p {
+		text-align: center;
+	}
+}
+
+.saved-showings {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	position: relative;
+	padding-top: 40px;
+	form {
+		width: calc(50% - 20px);
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 80%;
+		background: $orange;
+		top: 0;
+
+	}
+}
+
+@media (max-width: 768px) {
+	.saved {
+		width: 65%;
+	}
+	.saved-showings {
+		form {
+			width: calc(100% - 20px);
+			&:before {
+				left: 0;
+
+			}
+		}
+	}
+}
+
+
+

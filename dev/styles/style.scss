@@ -1,3 +1,88 @@
+@import 'partials/setup';
+@import 'partials/variables';
+@import 'partials/login';
+@import 'partials/loggedIn';
+@import 'partials/browse';
+@import 'partials/saved';
+
 body {
-	background: lightblue;
+	font-family: 'Raleway', sans-serif;
+	color: $black;
 }
+.content {
+	display: flex;
+}
+.wrapper {
+	max-width: 95%;
+	margin: 0 auto;
+}
+h1 {
+	margin: 0;
+	text-transform: uppercase;
+	span {
+		display: block;
+	}
+}
+
+h2 {
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	padding-bottom: 20px;
+	padding-top:  50px;
+	&:before {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 10%;
+		background: $black;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+form {
+	position: relative; 
+	text-align: center;
+	padding: 20px 10px 40px 10px;
+	margin: 10px;
+	-webkit-box-shadow: 10px 10px 19px -8px rgba(0,0,0,0.19);
+	-moz-box-shadow: 10px 10px 19px -8px rgba(0,0,0,0.19);
+	box-shadow: 10px 10px 19px -8px rgba(0,0,0,0.19);
+	button {
+		position: absolute;
+		border: none;
+		background: $orange;
+		color: $white;
+		padding: 5px 10px;
+		bottom: 0;
+		right: 0;
+	}
+}
+
+form h3 {
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	padding-bottom: 20px;
+	&:before {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 30px;
+		background: $orange;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@media (max-width: 480px) {
+	h2 {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+
+

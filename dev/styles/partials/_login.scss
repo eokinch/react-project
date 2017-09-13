@@ -1,0 +1,74 @@
+.log-in {
+	background: url(../../assets/theatre.jpg);
+	background-size: contain;
+	width: 100%;
+	height: 100Vh;
+	position: absolute;
+	z-index: 999;
+}
+
+.log-in_content {
+	color: white;
+	text-align: center;
+	background: rgba(0,0,0,0.7);
+	padding: 60px 40px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	h1 {
+		font-size: 2.5rem;
+		letter-spacing: 5px;
+	}
+	p {
+		font-size: 1.2rem;
+		letter-spacing: 1px;
+	}
+	button {
+		width: 75%;
+		border: none;
+		border-radius: 30px;
+		background: $orange;
+		color: white;
+		padding: 20px 0;
+		text-transform: uppercase;
+		font-size: 1.4rem;
+		letter-spacing: 1px;
+		font-weight: 700;
+	} 
+}
+
+
+
+@media (max-width: 768px) {
+	.log-in {
+		background-size: cover;
+	}
+	.log-in_content {
+		padding: 30px 20px;
+		h1 {
+			font-size: 2.2rem;
+			letter-spacing: 3px;
+		}
+		button {
+			width: 50%;
+			padding: 10px 0;
+			font-size: 1.2rem;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.log-in_content {
+		max-width: 80%;
+		padding: 30px 20px;
+		p {
+			font-size: 1rem;
+		}
+		h1 {
+			font-size: 2rem;
+		}
+		button {
+			font-size: 1rem;
+		}
+	}
+}
