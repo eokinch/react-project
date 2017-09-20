@@ -15,7 +15,7 @@ class Login extends React.Component {
 	login() {
 		auth.signInWithPopup(provider)
 		.then((res) => {	
-			history.push('/logged-in/browse');
+			history.push('/logged-in/welcome');
 			const user = res.user
 			this.setState({
 				user
@@ -34,7 +34,6 @@ class Login extends React.Component {
 	render() {
 		return(
 			<div className='check-user-status '>
-				{/*this.state.user*/}
 				{this.state.user ?
 					<div className="logged-in">
 						<div className="logged-in_content">

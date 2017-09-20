@@ -13,7 +13,7 @@ body {
 	display: flex;
 }
 .wrapper {
-	max-width: 95%;
+	max-width: 90%;
 	margin: 0 auto;
 }
 h1 {
@@ -46,9 +46,9 @@ form {
 	text-align: center;
 	padding: 20px 10px 40px 10px;
 	margin: 10px;
-	-webkit-box-shadow: 10px 10px 19px -8px rgba(0,0,0,0.19);
-	-moz-box-shadow: 10px 10px 19px -8px rgba(0,0,0,0.19);
-	box-shadow: 10px 10px 19px -8px rgba(0,0,0,0.19);
+	-webkit-box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.19);
+	-moz-box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.19);
+	box-shadow: 5px 5px 19px 5px rgba(0,0,0,0.19);
 	button {
 		position: absolute;
 		border: none;
@@ -74,6 +74,13 @@ form h3 {
 		bottom: 0;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+}
+.welcome {
+	width: 75%;
+	text-align: center;
+	h2:before {
+		background: $orange;
 	}
 }
 

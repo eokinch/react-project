@@ -11,7 +11,6 @@ class Browse extends React.Component {
 			selectedFilm: [],
 			user: null
 		}
-
 		this.componentDidMount = this.componentDidMount.bind(this);
 		this.getNames = this.getNames.bind(this);
 		this.handleSelection = this.handleSelection.bind(this);
@@ -19,61 +18,29 @@ class Browse extends React.Component {
 		this.saveShowing = this.saveShowing.bind(this);
     }
 	componentDidMount() {
-		const allMovies = [];
-		ajax({
-			url: `https://app.ticketmaster.com/discovery/v2/events`,
-			data: {
-				apikey: `Yb42dwODa4K2oGHdcaPyuw9PmKw6tk74`,
-				keyword: `TIFF`,
-				classificationName: `Film`,
-				size: 200,
-				page: 0,
-			}
-		}).then((res) => {
-			const films = res._embedded.events
-			films.map((film) => {
-				allMovies.push(film)
-			})
-			ajax({
-				url: `https://app.ticketmaster.com/discovery/v2/events`,
-				data: {
-					apikey: `Yb42dwODa4K2oGHdcaPyuw9PmKw6tk74`,
-					keyword: `TIFF`,
-					classificationName: `Film`,
-					size: 200,
-					page: 1,
-				}
-			}).then((res) => {
-				const films = res._embedded.events
-				films.map((film) => {
-					allMovies.push(film)
-				})
-				ajax({
-					url: `https://app.ticketmaster.com/discovery/v2/events`,
-					data: {
-						apikey: `Yb42dwODa4K2oGHdcaPyuw9PmKw6tk74`,
-						keyword: `TIFF`,
-						classificationName: `Film`,
-						size: 200,
-						page: 2,
-					}
-				}).then((res) => {
-					const films = res._embedded.events
-					films.map((film) => {
-						allMovies.push(film)
-					})
-					this.setState({
-							allFilms: allMovies
-					})
-				})
-			})
-		})
-		auth.onAuthStateChanged((user) => {
+		auth.onAuthStateChanged((user) => {	
+			console.log('on auth state changed');	
 			this.setState({
 				user: user
-			})
-		})
-
+			});
+		});
+		const allMovies = [];
+		const dbRef = firebase.database().ref(`/allFilms`);
+		dbRef.on('value', (snapshot) => {
+			console.log('on value');
+			console.log(snapshot.val());
+			const allFilms = snapshot.val();
+			for(let key in allFilms){
+				const films = allFilms[key]
+				for(let film in films){
+					const film = films[film];
+					allMovies.push(film);
+				}
+			}
+			this.setState({
+				allFilms: allMovies
+			});
+		});	
 	}
 	getNames(movies) {
 		const sortedTitles = _.sortBy(movies, 'name');

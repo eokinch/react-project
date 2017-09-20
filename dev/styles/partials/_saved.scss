@@ -6,6 +6,7 @@
 	p {
 		text-align: center;
 	}
+	
 }
 
 .saved-showings {
@@ -14,8 +15,9 @@
 	flex-wrap: wrap;
 	position: relative;
 	padding-top: 40px;
+	margin: 20px 0;
 	form {
-		width: calc(50% - 20px);
+		width: calc(50% - 40px);
 	}
 	&:before {
 		content: '';
@@ -24,12 +26,26 @@
 		width: 80%;
 		background: $orange;
 		top: 0;
-
+		left: 50%;
+		transform: translate(-50%);
 	}
 }
 
-@media (max-width: 550px) {
+.conflict {
+	.timing-conflict {
+		color: red;
+		text-transform: uppercase;
+		font-weight: bold;
+		padding-bottom: 5px;
+		border-bottom: 2px solid red;
+		display: inline;
+	}
+}
+
+@media (max-width: 650px) {
 	.saved-showings {
+		display: block;
+		margin: 10px 0;
 		form {
 			width: calc(100% - 20px);
 		}

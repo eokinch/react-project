@@ -1,12 +1,14 @@
 import React from 'react';
 import _ from 'underscore';
 import firebase, { auth, provider } from './firebase.js';
+import moment from 'moment';
 
 class Saved extends React.Component {
 	constructor() {
 	 	super();
 	 	this.state = {
 	 		savedFilms: [],
+	 		checkedTimes: {},
 	 		user: null
 	 	}
 	 	this.componentDidMount = this.componentDidMount.bind(this);
@@ -14,6 +16,7 @@ class Saved extends React.Component {
 	 	this.sortSavedShowings = this.sortSavedShowings.bind(this);
 	 	this.getSavedShowings = this.getSavedShowings.bind(this);
 	 	this.removeShowing = this.removeShowing.bind(this);
+	 	this.checkTimes = this.checkTimes.bind(this);
 	}
 	 componentDidMount() {
 	 	auth.onAuthStateChanged((user) => {	
@@ -22,7 +25,6 @@ class Saved extends React.Component {
 			}, this.getSavedList)
 
 		});
-		
 	 }
 	 getSavedList(){
  	 	const userId = this.state.user.uid
@@ -42,50 +44,63 @@ class Saved extends React.Component {
 	}
 	sortSavedShowings() {
 		const saved = Array.from(this.state.savedFilms);
-		const dateSorted = saved.sort((x, y) => {
-			const date1 = Date.parse(x.dates.start.localDate);
-			const date2 = Date.parse(y.dates.start.localDate);
-			if (date1 < date2) {
-				return -1
-			}
-			if(date1 > date2){
+		const sortFilms = saved.sort((x, y) => {
+			const date1 = x.dates.start.dateTime;
+			const date2 = y.dates.start.dateTime;
+			const moment1 = moment(date1)
+			const moment2 = moment(date2)
+			if (moment(moment1).isAfter(moment2)){
 				return 1
+			} 
+			if(moment(moment2).isAfter(moment1)) {
+				return -1
+			} 
+			if (moment(moment1).isSame(moment2)) {
+				return 0
 			}
-			return 0
 		})
-		// saving this code to reassess sort by both time and date;
-		// const timeSorted = dateSorted.sort((x, y) => {
-		// 	const date1 = x.dates.start.localDate
-		// 	const date2 = y.dates.start.localDate
-		// 	const time1 = parseInt(x.dates.start.localTime);
-		// 	const time2 = parseInt(y.dates.start.localTime);
-		// 	if(date1 === date2){
-		// 		if(time1 > time2) {
-		// 			return -1
-		// 		}
-		// 		if(time1 < time2) {
-		// 			return 1
-		// 		}
-		// 		return 0
-		// 	}
-		// })
 		this.setState({
-			savedFilms: dateSorted
-		})
+			savedFilms: sortFilms
+		}, this.checkTimes)
+	}
+	checkTimes() {
+		const dateTime = {};
+		const films = this.state.savedFilms;
+		films.map((film) => {
+			const date = film.dates.start.dateTime;
+			if(date in dateTime) {
+				dateTime[date] += 1
+			} else {
+				dateTime[date] = 1
+			}
+		});
+		this.setState({
+			checkedTimes: dateTime
+		});
 	}
 	getSavedShowings() {
-		const films = this.state.savedFilms
+		const films = this.state.savedFilms;
 		return films.map((film) => {
-			return( 
-				<form key={film.key} value={film.key} onSubmit={this.removeShowing} className='user-saved-showing'>
-					<h3>{film.name}</h3>
-					<p className='date'>Date: {film.dates.start.localDate}</p>
-					<p className="time">Time: {film.dates.start.localTime}</p>
-					<p className='location'>{film._embedded.venues[0].name}</p>
-					<button >Remove</button>
-				</form>
-			
-			)
+				const startDate = film.dates.start.dateTime;
+				const conflict = this.state.checkedTimes[startDate];
+				{if(conflict > 1) {
+					return <form key={film.key} value={film.key} onSubmit={this.removeShowing} className='user-saved-showing conflict'>
+								<p className="timing-conflict">Timing Conflict</p>
+								<h3>{film.name}</h3>
+								<p className='date'>Date: {film.dates.start.localDate}</p>
+								<p className="time">Time: {film.dates.start.localTime}</p>
+								<p className='location'>{film._embedded.venues[0].name}</p>
+								<button>X</button>
+							</form>	
+				} else {
+					return <form key={film.key} value={film.key} onSubmit={this.removeShowing} className='user-saved-showing'>
+								<h3>{film.name}</h3>
+								<p className='date'>Date: {film.dates.start.localDate}</p>
+								<p className="time">Time: {film.dates.start.localTime}</p>
+								<p className='location'>{film._embedded.venues[0].name}</p>
+								<button>X</button>
+							</form>
+				}}
 		})
 	}
 	removeShowing(event) {
@@ -99,7 +114,7 @@ class Saved extends React.Component {
 		return(
 			<section className='saved' classID='saved'>
 				<h2>Your Saved Showings</h2>
-				<p>Sorted By Date</p>
+				<p>Sorted By Date & Time</p>
 				<div className="saved-showings">
 					{this.getSavedShowings()}
 				</div>
